@@ -11,17 +11,12 @@ function numList(n) {
 }
 
 // POP ONLY REMOVES LAST ELEMENT
-// USE SPLICE - figure out params
+// USE SPLICE 
 function selectionSort(numList) {
-    // Initializes min and pops it off the list and puts it in front of list
+    // Initializes min and splice it off the list and puts it in front of list
     let min = Math.min(...numList);
-    console.log(`minimum num ${min}`)
-    console.log(`before splice ${numList}`)
-    console.log(`indexOf ${numList.indexOf(min)}`)
-    console.log(`splice ${numList.splice(numList.indexOf(min), 1)}`)
-    console.log(`The splice ${numList.unshift(numList.splice(numList.indexOf(min), 1, min))}`)
-    numList.unshift(numList.splice(min, 1))
-    console.log(`after pop ${numList}`)
+    numList.unshift(numList.splice(numList.indexOf(min), 1))
+
     for(let i = 1; i < numList.length; i++) {
         if(numList[i] >= numList[i+1]) {
             // const x = [numList[i+1], numList[i]];
@@ -34,15 +29,13 @@ function selectionSort(numList) {
     console.log(`${numList}`)
     for(let i = 0; i < numList.length; i++) {
         if(numList[i] <= numList[i+1]) {
-            console.log(`if ${numList[i]} ${numList[i+1]}`)
             continue
         }
-        else if(numList[i] === undefined) {
-            console.log(`else if ${numList[i]} ${undefined}`)
+        else if(numList[i+1] === undefined) {
             continue
         }
         else {
-            console.log(`else ${numList[i]} ${numList[i+1]}`)
+            console.log(`Not sorted ${numList}`)
             return false
         }
     }
@@ -58,7 +51,7 @@ function main(numList) {
     console.log(`Sorted  ${numList}`);
 }
 
-main(selectionSort(numList(5)))
+main(numList(5))
 
 
 
